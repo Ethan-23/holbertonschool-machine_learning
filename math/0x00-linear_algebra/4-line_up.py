@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """4-line_up"""
 
+
 def add_arrays(arr1, arr2):
     """add_arrays"""
     new_arr = []

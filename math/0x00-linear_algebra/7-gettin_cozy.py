@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """7-getting_cozy"""
 
+
 def cat_matrices2D(mat1, mat2, axis=0):
     """cat_matrices2D"""
     new_mat = []

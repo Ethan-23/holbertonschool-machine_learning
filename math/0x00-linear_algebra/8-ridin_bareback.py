@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """8-ridin_bareback"""
 
+
 def mat_mul(mat1, mat2):
     """mat_mul"""
     new_mat = []
