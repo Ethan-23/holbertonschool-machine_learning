@@ -8,6 +8,6 @@ def matrix_shape(matrix):
     intlist.append(len(matrix))
     if type(matrix[0]) is list:
         intlist.append(len(matrix[0]))
-    if type(matrix[0][0]) is list:
-        intlist.append(len(matrix[0][0]))
+        if type(matrix[0][0]) is list:
+            intlist.append(len(matrix[0][0]))
     return intlist
