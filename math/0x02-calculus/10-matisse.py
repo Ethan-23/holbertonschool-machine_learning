@@ -4,9 +4,11 @@
 
 def poly_derivative(poly):
     """poly derivative"""
-    new = []
+    if type(poly) != list or len(poly) == 0:
+        return None
     if poly == [0]:
         return [0]
+    new = []
     for i in range(len(poly)):
         if i != 0:
             if poly[i] == 0:
