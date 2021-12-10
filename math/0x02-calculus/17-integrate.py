@@ -6,7 +6,7 @@ def poly_integral(poly, C=0):
     """Integrate"""
     if type(poly) != list or len(poly) == 0 or type(C) is not int:
         return None
-    if len(poly) == 1:
+    if poly == [0]:
         return [C]
     integral = [C]
     for i in range(len(poly)):
