@@ -6,7 +6,7 @@ def poly_derivative(poly):
     """poly derivative"""
     if type(poly) != list or len(poly) == 0:
         return None
-    if poly == [0]:
+    if len(poly) == 1:
         return [0]
     new = []
     for i in range(len(poly)):
