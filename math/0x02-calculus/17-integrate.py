@@ -4,14 +4,15 @@
 
 def poly_integral(poly, C=0):
     """Integrate"""
-    if type(poly) != list or len(poly) == 0:
+    if type(poly) != list or len(poly) == 0 or type(C) is not int:
         return None
     if len(poly) == 1:
         return [0]
-    integral = [0]
+    integral = [C]
     for i in range(len(poly)):
-        if poly[i] == 0 or i == 0:
-            integral.append(int(poly[i]))
+        num = poly[i] / (i + 1)
+        if num.is_integer() == False:
+            integral.append(num)
         else:
-            integral.append(poly[i] / (i + 1))
+            integral.append(int(num))
     return integral
