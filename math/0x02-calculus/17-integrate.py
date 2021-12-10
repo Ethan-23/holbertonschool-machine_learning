@@ -7,11 +7,11 @@ def poly_integral(poly, C=0):
     if type(poly) != list or len(poly) == 0 or type(C) is not int:
         return None
     if len(poly) == 1:
-        return [0]
+        return [C]
     integral = [C]
     for i in range(len(poly)):
         num = poly[i] / (i + 1)
-        if num.is_integer() == False:
+        if num.is_integer() is False:
             integral.append(num)
         else:
             integral.append(int(num))
