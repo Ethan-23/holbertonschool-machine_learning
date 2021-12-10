@@ -10,8 +10,8 @@ def poly_integral(poly, C=0):
         return [0]
     integral = [0]
     for i in range(len(poly)):
-        if poly[i] == 0:
-            integral.append(poly[i])
+        if poly[i] == 0 or i == 0:
+            integral.append(int(poly[i]))
         else:
             integral.append(poly[i] / (i + 1))
     return integral
