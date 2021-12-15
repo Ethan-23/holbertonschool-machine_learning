@@ -4,11 +4,13 @@
 
 class Poisson:
     """Poisson class"""
+
+    e = 2.7182818285
+
     def __init__(self, data=None, lambtha=1.):
         """Init for poisson class"""
-        self.e = 2.7182818285
         if data is None:
-            if lambtha < 0:
+            if lambtha <= 0:
                 raise ValueError("lambtha must be a positive value")
             self.lambtha = float(lambtha)
         else:
