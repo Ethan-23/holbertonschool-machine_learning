@@ -35,10 +35,10 @@ class Poisson:
         """Poisson PMF"""
         if type(k) is not int:
             k = int(k)
-        if k < 0:
+        if k <= 0:
             return 0
         num = 0
-        while k > 0:
+        while k >= 0:
             num += self.pmf(k)
             k -= 1
         return num
