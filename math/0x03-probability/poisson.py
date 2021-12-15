@@ -30,3 +30,15 @@ class Poisson:
         for i in range(1, k+1):
             fact *= i
         return (self.lambtha ** k * self.e ** -self.lambtha) / fact
+
+    def cdf(self, k):
+        """Poisson PMF"""
+        if type(k) is not int:
+            k = int(k)
+        if k < 0:
+            return 0
+        num = 0
+        while k > 0:
+            num += self.pmf(k)
+            k -= 1
+        return num
