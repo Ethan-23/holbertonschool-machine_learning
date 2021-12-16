@@ -24,8 +24,6 @@ class Normal:
             variance = sum(deviations) / len(data)
             self.stddev = variance ** 0.5
 
-        
-
     def z_score(self, x):
         """z_score function"""
         return (x - self.mean) / self.stddev
