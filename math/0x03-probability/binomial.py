@@ -31,7 +31,7 @@ class Binomial:
         """Binomial PMF"""
         if type(k) is not int:
             k = int(k)
-        if k <= 0 or k >= self.n:
+        if k < 0 or k > self.n:
             return 0
         nfact = 1
         kfact = 1
@@ -49,7 +49,7 @@ class Binomial:
         """Binomial PMF"""
         if type(k) is not int:
             k = int(k)
-        if k <= 0 or k >= self.n:
+        if k < 0 or k > self.n:
             return 0
         num = 0
         while k >= 0:
