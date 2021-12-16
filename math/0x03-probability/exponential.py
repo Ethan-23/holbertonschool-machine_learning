@@ -20,25 +20,14 @@ class Exponential:
                 raise ValueError("data must contain multiple values")
             self.lambtha = 1 / (sum(data) / len(data))
 
-    def pmf(self, k):
+    def pdf(self, x):
         """Exponential PMF"""
-        if type(k) is not int:
-            k = int(k)
-        if k < 0:
+        if x < 0:
             return 0
-        fact = 1
-        for i in range(1, k+1):
-            fact *= i
-        return (self.lambtha ** k * self.e ** -self.lambtha) / fact
+        return self.lambtha * self.e ** (-self.lambtha * x)
 
-    def cdf(self, k):
+    def cdf(self, x):
         """Exponential PMF"""
-        if type(k) is not int:
-            k = int(k)
-        if k <= 0:
+        if x <= 0:
             return 0
-        num = 0
-        while k >= 0:
-            num += self.pmf(k)
-            k -= 1
-        return num
+        return 1 - self.e ** (-self.lambtha * x)
