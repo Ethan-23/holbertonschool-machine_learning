@@ -18,7 +18,7 @@ class Neuron:
         self.__W = np.random.normal(size=(1, nx))
         self.__b = 0
         self.__A = 0
-    
+
     @property
     def W(self):
         """Getter for W"""
@@ -51,8 +51,10 @@ class Neuron:
     def cost(self, Y, A):
         """
         Calculates the cost of the model using logistic regression
-        Y is a numpy.ndarray with shape (1, m) that contains the correct labels for the input data
-        A is a numpy.ndarray with shape (1, m) containing the activated output of the neuron for each example
+        Y is a numpy.ndarray with shape (1, m) that contains the correct
+            labels for the input data
+        A is a numpy.ndarray with shape (1, m) containing the activated
+            output of the neuron for each example
         """
         loss = -(Y*np.log(A) + (1 - Y) * np.log(1.0000001 - A))
         cost = np.sum(1/Y.shape[1] * loss)
@@ -64,8 +66,10 @@ class Neuron:
         X is a numpy.ndarray with shape (nx, m) that contains the input data
         - nx is the number of input features to the neuron
         - m is the number of examples
-        Y is a numpy.ndarray with shape (1, m) that contains the correct labels for the input data
-        Returns the neuron’s prediction and the cost of the network, respectively
+        Y is a numpy.ndarray with shape (1, m) that contains the correct
+            labels for the input data
+        Returns the neuron’s prediction and the cost of the network,
+            respectively
         """
         A = self.forward_prop(X)
         cost = self.cost(Y, A)

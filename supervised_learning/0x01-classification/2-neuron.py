@@ -18,7 +18,7 @@ class Neuron:
         self.__W = np.random.normal(size=(1, nx))
         self.__b = 0
         self.__A = 0
-    
+
     @property
     def W(self):
         """Getter for W"""

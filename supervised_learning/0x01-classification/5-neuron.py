@@ -59,3 +59,37 @@ class Neuron:
         loss = -(Y*np.log(A) + (1 - Y) * np.log(1.0000001 - A))
         cost = np.sum(1/Y.shape[1] * loss)
         return cost
+
+    def evaluate(self, X, Y):
+        """
+        Evaluates the neuron’s predictions
+        X is a numpy.ndarray with shape (nx, m) that contains the input data
+        - nx is the number of input features to the neuron
+        - m is the number of examples
+        Y is a numpy.ndarray with shape (1, m) that contains the correct
+            labels for the input data
+        Returns the neuron’s prediction and the cost of the network,
+            respectively
+        """
+        A = self.forward_prop(X)
+        cost = self.cost(Y, A)
+        pred = np.where(A >= 0.5, 1, 0)
+        return pred, cost
+
+    def gradient_descent(self, X, Y, A, alpha=0.05):
+        """
+        Calculates one pass of gradient descent on the neuron
+        X is a numpy.ndarray with shape (nx, m) that contains the input data
+        - nx is the number of input features to the neuron
+        - m is the number of examples
+        Y is a numpy.ndarray with shape (1, m) that contains the correct
+            labels for the input data
+        A is a numpy.ndarray with shape (1, m) containing the activated output
+            of the neuron for each example
+        alpha is the learning rate
+        """
+        m = Y.shape[1]
+        dw = (1/m) * (np.matmul(X, (A - Y).transpose()).transpose())
+        db = (1/m) * np.sum(A - Y)
+        self.__W = self.W - (alpha * dw)
+        self.__b = self.b - (alpha * db)
