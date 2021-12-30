@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""1. Privatize Neuron"""
 
 import numpy as np
 

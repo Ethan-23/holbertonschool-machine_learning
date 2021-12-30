@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""6. Train Neuron"""
 
 import numpy as np
 

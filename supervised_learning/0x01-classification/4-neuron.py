@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""4. Evaluate Neuron"""
 
 import numpy as np
 

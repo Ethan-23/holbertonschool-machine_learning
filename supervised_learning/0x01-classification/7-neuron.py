@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""7. Upgrade Train Neuron"""
 
 import numpy as np
 import matplotlib.pyplot as plt
