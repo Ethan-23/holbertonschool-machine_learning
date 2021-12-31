@@ -84,6 +84,6 @@ class NeuralNetwork:
             output of the neuron for each example
         Returns the cost
         """
-        loss = -(Y*np.log(A) + (1 - Y) * np.log(1.0000001 - A))
+        loss = -(Y * np.log(A) + (1 - Y) * np.log(1.0000001 - A))
         cost = np.sum(1/Y.shape[1] * loss)
         return cost
