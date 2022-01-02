@@ -70,16 +70,3 @@ class DeepNeuralNetwork:
             self.cache[a] = self.sigmoid(Z)
             prev = self.cache[a]
         return self.cache[a], self.cache
-
-    def cost(self, Y, A):
-        """
-        Calculates the cost of the model using logistic regression
-        Y is a numpy.ndarray with shape (1, m) that contains the correct
-            labels for the input data
-        A is a numpy.ndarray with shape (1, m) containing the activated
-            output of the neuron for each example
-        Returns the cost
-        """
-        loss = -(Y*np.log(A) + (1 - Y) * np.log(1.0000001 - A))
-        cost = np.sum(1/Y.shape[1] * loss)
-        return cost
