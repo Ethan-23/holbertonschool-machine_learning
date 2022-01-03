@@ -12,6 +12,10 @@ def one_hot_encode(Y, classes):
     Returns: a one-hot encoding of Y with shape (classes, m), or None
         on failure
     """
+    if type(Y) is not np.ndarray:
+        return None
+    if type(classes) is not int:
+        return None
     if classes != len(Y):
         return None
     size = (classes, len(Y))
