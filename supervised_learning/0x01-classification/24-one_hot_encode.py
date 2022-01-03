@@ -16,10 +16,11 @@ def one_hot_encode(Y, classes):
         return None
     if type(classes) is not int:
         return None
-    if classes != len(Y):
+    try:
+        size = (classes, len(Y))
+        one_hot = np.zeros(size)
+        rows = np.arange(classes)
+        one_hot[Y, rows] = 1
+        return one_hot
+    except Exception as error:
         return None
-    size = (classes, len(Y))
-    one_hot = np.zeros(size)
-    rows = np.arange(classes)
-    one_hot[Y, rows] = 1
-    return one_hot
