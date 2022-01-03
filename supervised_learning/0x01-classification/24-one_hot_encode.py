@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""24. One-Hot Encode"""
 
 import numpy as np
 
