@@ -17,10 +17,7 @@ def one_hot_encode(Y, classes):
     if type(classes) is not int:
         return None
     try:
-        size = (classes, len(Y))
-        one_hot = np.zeros(size)
-        rows = np.arange(classes)
-        one_hot[Y, rows] = 1
+        one_hot = np.eye(classes)[Y].transpose()
         return one_hot
     except Exception as error:
         return None
