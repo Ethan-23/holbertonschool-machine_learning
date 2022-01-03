@@ -14,7 +14,7 @@ def one_hot_encode(Y, classes):
     """
     if classes > len(Y):
         return None
-    size = (classes, len(Y))
+    size = (len(Y), classes)
     one_hot = np.zeros(size)
     rows = np.arange(classes)
     one_hot[Y, rows] = 1
