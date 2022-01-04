@@ -80,14 +80,14 @@ class DeepNeuralNetwork:
             w = "W{}".format(i + 1)
             b = "b{}".format(i + 1)
             Z = np.matmul(self.weights[w], prev) + self.weights[b]
-            if self.activation == "sig":
-                self.cache[a] = self.sigmoid(Z)
-            elif self.activation == "tanh":
-                if i == self.__L - 1:
-                    t = np.exp(Z)
-                    self.cache[a] = (t / np.sum(t, axis=0, keepdims=True))
-                else:
+            if i == self.__L - 1:
+                t = np.exp(Z)
+                self.cache[a] = (t / np.sum(t, axis=0, keepdims=True))
+            else:
+                if self.activation == "sig":
                     self.cache[a] = (1 / (1 + np.exp(-Z)))
+                else:
+                    self.cache[a] = np.tanh(Z)
             prev = self.cache[a]
         return self.cache[a], self.cache
 
