@@ -144,7 +144,7 @@ class DeepNeuralNetwork:
                 bptemp = np.matmul(W_prev.transpose(), prev)
                 if self.__activation == 'sig':
                     bp["dz{}".format(i)] = bptemp * (cache[a] * (1 - cache[a]))
-                else:
+                elif self.__activation == 'tanh':
                     bp["dz{}".format(i)] = bptemp * (1 - cache[a] ** 2)
             dz = bp["dz{}".format(i)]
             dw = (1/m) * np.matmul(dz, cache[a_prev].transpose())
