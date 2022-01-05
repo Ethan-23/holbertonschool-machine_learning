@@ -103,7 +103,7 @@ class DeepNeuralNetwork:
         """
         A, cache = self.forward_prop(X)
         cost = self.cost(Y, A)
-        pred = np.where(A >= 0.5, 1, 0)
+        pred = np.where(A == np.amax(A, axis=0), 1, 0)
         return pred, cost
 
     def gradient_descent(self, Y, cache, alpha=0.05):
