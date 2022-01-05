@@ -86,7 +86,7 @@ class DeepNeuralNetwork:
             else:
                 if self.activation == 'sig':
                     self.cache[a] = sigmoid(Z)
-                else:
+                elif self.__activation == 'tanh':
                     self.cache[a] = np.tanh(Z)
             prev = self.cache[a]
         return self.cache[a], self.cache
