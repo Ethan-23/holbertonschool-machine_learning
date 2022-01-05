@@ -85,7 +85,7 @@ class DeepNeuralNetwork:
                 self.cache[a] = (t / np.sum(t, axis=0, keepdims=True))
             else:
                 if self.activation == 'sig':
-                    self.cache[a] = sigmoid(Z)
+                    self.cache[a] = self.sigmoid(Z)
                 elif self.__activation == 'tanh':
                     self.cache[a] = np.tanh(Z)
             prev = self.cache[a]
