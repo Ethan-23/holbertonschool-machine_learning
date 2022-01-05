@@ -26,7 +26,7 @@ class DeepNeuralNetwork:
             raise ValueError("nx must be a positive integer")
         if type(layers) != list or not layers:
             raise TypeError("layers must be a list of positive integers")
-        if activation is not "sig" or activation is not "tanh":
+        if activation != "sig" or activation != "tanh":
             raise ValueError("activation must be \'sig\' or \'tanh\'")
         self.__L = len(layers)
         self.__cache = {}
@@ -84,7 +84,7 @@ class DeepNeuralNetwork:
                 t = np.exp(Z)
                 self.cache[a] = (t / np.sum(t, axis=0, keepdims=True))
             else:
-                if self.activation == "sig":
+                if self.activation == 'sig':
                     self.cache[a] = sigmoid(Z)
                 else:
                     self.cache[a] = np.tanh(Z)
@@ -142,7 +142,7 @@ class DeepNeuralNetwork:
             else:
                 prev = bp["dz{}".format(i + 1)]
                 bptemp = np.matmul(W_prev.transpose(), prev)
-                if self.__activation == "sig":
+                if self.__activation == 'sig':
                     bp["dz{}".format(i)] = bptemp * (cache[a] * (1 - cache[a]))
                 else:
                     bp["dz{}".format(i)] = bptemp * (1 - cache[a] ** 2)
