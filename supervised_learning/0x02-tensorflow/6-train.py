@@ -42,7 +42,7 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes, activations,
 
     with tf.Session() as sees:
         sees.run(init)
-        for i in range(iterations + 1):
+        for i in range(iterations):
             train_cost = sees.run(
                 loss,
                 feed_dict={x: X_train, y: Y_train}
@@ -65,6 +65,27 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes, activations,
                 print("\tTraining Accuracy: {}".format(train_accuracy))
                 print("\tValidation Cost: {}".format(valid_cost))
                 print("\tValidation Accuracy: {}".format(valid_accuarcy))
-            if i != iterations + 1:
-                sees.run(train_op, feed_dict={x: X_train, y: Y_train})
+            sees.run(train_op, feed_dict={x: X_train, y: Y_train})
+        i += 1
+        train_cost = sees.run(
+            loss,
+            feed_dict={x: X_train, y: Y_train}
+        )
+        train_accuracy = sees.run(
+            accuracy,
+            feed_dict={x: X_train, y: Y_train}
+        )
+        valid_cost = sees.run(
+            loss,
+            feed_dict={x: X_valid, y: Y_valid}
+        )
+        valid_accuarcy = sees.run(
+            accuracy,
+            feed_dict={x: X_valid, y: Y_valid}
+        )
+        print("After {} iterations:".format(i))
+        print("\tTraining Cost: {}".format(train_cost))
+        print("\tTraining Accuracy: {}".format(train_accuracy))
+        print("\tValidation Cost: {}".format(valid_cost))
+        print("\tValidation Accuracy: {}".format(valid_accuarcy))
         return saver.save(sees, save_path)
