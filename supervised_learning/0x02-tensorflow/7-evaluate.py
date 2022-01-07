@@ -31,4 +31,4 @@ def evaluate(X, Y, save_path):
             loss,
             feed_dict={x: X, y: Y}
         )
-        return prediction, accuracy, loss
+    return prediction, accuracy, loss
