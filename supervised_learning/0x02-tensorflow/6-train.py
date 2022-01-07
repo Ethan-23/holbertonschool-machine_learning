@@ -65,6 +65,6 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes, activations,
                 print("\tTraining Accuracy: {}".format(train_accuracy))
                 print("\tValidation Cost: {}".format(valid_cost))
                 print("\tValidation Accuracy: {}".format(valid_accuarcy))
-            if i <= iterations:
+            if i != iterations + 1:
                 sees.run(train_op, feed_dict={x: X_train, y: Y_train})
         return saver.save(sees, save_path)
