@@ -3,6 +3,7 @@
 
 import tensorflow.compat.v1 as tf
 
+
 def evaluate(X, Y, save_path):
     """
     X is a numpy.ndarray containing the input data to evaluate
