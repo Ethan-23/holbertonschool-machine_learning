@@ -66,4 +66,6 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes, activations,
         print("\tTraining Accuracy: {}".format(train_accuracy))
         print("\tValidation Cost: {}".format(valid_cost))
         print("\tValidation Accuracy: {}".format(valid_accuarcy))
-        return saver.save(sees, save_path)
+        save = saver.save(sees, save_path)
+        sees.close()
+    return save
