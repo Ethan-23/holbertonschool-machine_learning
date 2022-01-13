@@ -75,7 +75,7 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
                 )
                 steps += 1
                 if steps % 100 == 0:
-                    print("\tStep {}".format(steps))
+                    print("\tStep {}:".format(steps))
                     step_cost = sess.run(
                         loss,
                         feed_dict={x: X_train_s[low:high, :],
