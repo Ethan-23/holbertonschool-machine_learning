@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-""" """
+"""12-learningn_rate_decay"""
+import tensorflow.compat.v1 as tf
 
 
 def learning_rate_decay(alpha, decay_rate, global_step, decay_step):
@@ -13,5 +14,10 @@ def learning_rate_decay(alpha, decay_rate, global_step, decay_step):
     Returns: the learning rate decay operation
     """
     op = tf.train.inverse_time_decay(
-        alpha, global_step, decay_step, decay_rate, staircase=True)
+        alpha,
+        global_step,
+        decay_step,
+        decay_rate,
+        staircase=True
+    )
     return op
