@@ -12,7 +12,8 @@ def dropout_create_layer(prev, n, activation, keep_prob):
     keep_prob is the probability that a node will be kept
     Returns: the output of the new layer
     """
-    kernel_initializer = tf.keras.initializers.VarianceScaling(mode=("fan_avg")
+    kernel_initializer = tf.keras.initializers.VarianceScaling(scale=2.0,
+                                                               mode="fan_avg"
                                                                )
     kernel_regularizer = tf.layers.Dropout(keep_prob)
     layer = tf.layers.Dense(name='layer', units=n, activation=activation,
