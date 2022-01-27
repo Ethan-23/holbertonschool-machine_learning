@@ -28,7 +28,7 @@ def convolve_channels(images, kernel, padding='same', stride=(1, 1)):
     Returns: a numpy.ndarray containing the convolved images
     """
     m, h, w, c = images.shape
-    kw, kh = kernel.shape
+    kw, kh = kernel.shape[1], kernel.shape[0]
     sh, sw = stride
 
     if padding == 'same':
