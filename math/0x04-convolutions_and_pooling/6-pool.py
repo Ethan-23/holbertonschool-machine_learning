@@ -33,7 +33,7 @@ def pool(images, kernel_shape, stride, mode='max'):
     i = 0
     for height in range(0, (h - kh + 1), sh):
         j = 0
-        for width in range(0, (w - kw + 1), sh):
+        for width in range(0, (w - kw + 1), sw):
             if mode == 'max':
                 output = np.max(images[:, height:height + kh,
                                        width:width + kw, :],
