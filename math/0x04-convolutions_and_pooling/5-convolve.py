@@ -16,6 +16,7 @@ def convolve(images, kernels, padding='same', stride=(1, 1)):
         the kernel for the convolution
     - kh is the height of the kernel
     - kw is the width of the kernel
+    - c is the channles
     - nc is the number of kernels
     padding is either a tuple of (ph, pw), ‘same’, or ‘valid’
     - ‘same’, performs a same convolution
@@ -29,7 +30,7 @@ def convolve(images, kernels, padding='same', stride=(1, 1)):
     Returns: a numpy.ndarray containing the convolved images
     """
     m, h, w, c = images.shape
-    kw, kh, kc, nc = kernels.shape
+    kh, kw, kc, nc = kernels.shape
     sh, sw = stride
 
     if padding == 'same':
