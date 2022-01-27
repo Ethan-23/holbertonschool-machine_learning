@@ -34,8 +34,8 @@ def convolve_grayscale_padding(images, kernel, padding):
                           (pw, pw)),
                           'constant', constant_values=0)
 
-    for height in range(h):
-        for width in range(w):
+    for height in range(custom_h):
+        for width in range(custom_w):
             output = np.sum(image_padded[:, height:height + kh,
                                          width: width + kw] * kernel,
                             axis=1).sum(axis=1)
