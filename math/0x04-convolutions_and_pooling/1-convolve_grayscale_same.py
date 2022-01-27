@@ -22,6 +22,10 @@ def convolve_grayscale_same(images, kernel):
 
     padding_along_height = max((h - 1) * 1 + kh - h, 0)
     padding_along_width = max((w - 1) * 1 + kw - w, 0)
+    if(padding_along_height % 2 != 0):
+        padding_along_height -= 1
+    if(padding_along_width % 2 != 0):
+        padding_along_width -= 1
     pad_top = padding_along_height // 2
     pad_bot = padding_along_height - pad_top
     pad_left = padding_along_width // 2
