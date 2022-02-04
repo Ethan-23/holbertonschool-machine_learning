@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Convolutional Back Prop"""
 
-import numpy as np
 import tensorflow.compat.v1 as tf
 
 
