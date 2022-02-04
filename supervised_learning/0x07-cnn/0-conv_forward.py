@@ -37,8 +37,6 @@ def conv_forward(A_prev, W, b, activation, padding="same", stride=(1, 1)):
         pw = ((((w - 1) * sw) + kw - w) // 2) + 1
     elif padding == 'valid':
         ph, pw = 0, 0
-    else:
-        return
 
     custom_h = ((h + (2 * ph) - kh)//sh) + 1
     custom_w = ((w + (2 * pw) - kw)//sw) + 1
