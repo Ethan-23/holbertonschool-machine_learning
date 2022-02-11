@@ -19,7 +19,6 @@ def resnet50():
         kernel_size=(7, 7),
         padding='same',
         strides=(2, 2),
-        activation=activation,
         kernel_initializer=kernel_initializer
     )(img_input)
     B1 = K.layers.BatchNormalization(axis=3)(C1)
