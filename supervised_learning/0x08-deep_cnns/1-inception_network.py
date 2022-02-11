@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Inception Block"""
+"""Inception Network"""
 
 import tensorflow.keras as K
 inception_block = __import__('0-inception_block').inception_block
@@ -7,6 +7,7 @@ inception_block = __import__('0-inception_block').inception_block
 
 def inception_network():
     """
+    builds an inception network
     Returns: the keras model
     """
     kernel_initializer = K.initializers.he_normal()
