@@ -71,10 +71,6 @@ def inception_network():
         padding='valid'
     )(I9)
     D1 = K.layers.Dropout(rate=0.4)(A1)
-    output = K.layers.Dense(
-        1000,
-        activation='softmax',
-        kernel_initializer=kernel_initializer
-    )(D1)
+    output = K.layers.Dense(1000, activation='softmax')(D1)
     model = K.Model(inputs=img_input, outputs=output)
     return model
