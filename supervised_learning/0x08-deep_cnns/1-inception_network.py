@@ -21,19 +21,11 @@ def inception_network():
         activation=activation,
         kernel_initializer=kernel_initializer
     )(img_input)
-    M1 = K.layers.MaxPooling2D(
+    M1 = K.layers.MaxPool2D(
         pool_size=(3, 3),
         strides=(2, 2),
         padding='same'
     )(C1)
-    C2 = K.layers.Conv2D(
-        filters=64,
-        kernel_size=(1, 1),
-        padding='same',
-        strides=(1, 1),
-        activation=activation,
-        kernel_initializer=kernel_initializer
-    )(M1)
     C3 = K.layers.Conv2D(
         filters=192,
         kernel_size=(3, 3),
@@ -41,7 +33,7 @@ def inception_network():
         strides=(1, 1),
         activation=activation,
         kernel_initializer=kernel_initializer
-    )(C2)
+    )(M1)
     M2 = K.layers.MaxPooling2D(
         pool_size=(3, 3),
         strides=(2, 2),
