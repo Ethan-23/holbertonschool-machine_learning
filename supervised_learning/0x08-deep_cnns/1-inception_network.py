@@ -11,7 +11,7 @@ def inception_network():
     """
     kernel_initializer = K.initializers.he_normal()
     activation = K.activations.relu
-    img_input = K.Input(shape=(224, 224, 3))
+    img_input = K.layers.Input((224, 224, 3))
     C1 = K.layers.Conv2D(
         filters=64,
         kernel_size=(7, 7),
