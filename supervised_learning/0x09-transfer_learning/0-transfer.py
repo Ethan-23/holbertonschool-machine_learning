@@ -12,9 +12,9 @@ def preprocess_data(X, Y):
     - X_p is a numpy.ndarray containing the preprocessed X
     - Y_p is a numpy.ndarray containing the preprocessed Y
     """
-    x = K.applications.inception_resnet_v2.preprocess_input(X)
-    y = K.utils.to_categorical(Y, 10)
-    return x, y
+    X_p = K.applications.inception_resnet_v2.preprocess_input(X)
+    Y_p = K.utils.to_categorical(Y, 10)
+    return X_p, Y_p
 
 if __name__ == '__main__':
     (X_train, Y_train), (X_test, Y_test) = K.datasets.cifar10.load_data()
