@@ -5,7 +5,14 @@ import tensorflow as tf
 
 
 class Yolo:
-    """Yolo Class"""
+    """
+    Yolo Class
+    - model: the Darknet Keras model
+    - class_names: a list of the class names for the model
+    - class_t: the box score threshold for the initial filtering step
+    - nms_t: the IOU threshold for non-max suppression
+    - anchors: the anchor boxes
+    """
 
     def __init__(self, model_path, classes_path, class_t, nms_t, anchors):
         """
