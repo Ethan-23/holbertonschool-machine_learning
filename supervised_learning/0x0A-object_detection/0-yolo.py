@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """0x0A. Object Detection"""
 
-import tensorflow.keras as K
+import tensorflow as tf
 
 
 class Yolo:
@@ -23,7 +23,7 @@ class Yolo:
         - anchor_boxes is the number of anchor boxes used for each prediction
         - 2 => [anchor_box_width, anchor_box_height]
         """
-        self.model = K.models.load_model(model_path)
+        self.model = tf.keras.models.load_model(model_path)
         with open(classes_path, 'r') as file:
             self.class_names = file.read().replace('\n', ' ').split(" ")
         self.class_t = class_t
