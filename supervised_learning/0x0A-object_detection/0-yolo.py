@@ -25,7 +25,7 @@ class Yolo:
         """
         self.model = tf.keras.models.load_model(model_path)
         with open(classes_path, 'r') as file:
-            self.class_names = file.read().replace('\n', ' ').split(" ")
+            self.class_names = file.read().replace('\n', '  ').split("  ")
         self.class_t = class_t
         self.nms_t = nms_t
         self.anchors = anchors
