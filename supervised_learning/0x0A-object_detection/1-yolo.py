@@ -93,4 +93,10 @@ class Yolo:
             box_confidences.append(box_conf)
             box_class_probs.append(sig_prob)
 
-        return (boxes, box_confidences, box_class_probs)
+            x1, y1 = t_x-t_w/2, t_y-t_h/2
+            x2, y2 = t_x+t_w/2, t_y+t_h/2
+
+            box = np.concatenate((x1, y1, x2, y2), axis=-1)
+
+            boxes.append(box)
+        return (boxes, None, None)
