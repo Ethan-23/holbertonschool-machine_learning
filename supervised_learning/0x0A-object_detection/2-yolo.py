@@ -136,10 +136,9 @@ class Yolo:
 
         for i, box in enumerate(boxes):
             scores = box_confidences[i] * box_class_probs[i]
-            classes = np.argmax(scores, axis=-1)
-            box_score = np.max(scores, axis=-1)
             box_class = np.argmax(scores, axis=-1)
-            index = np.where(box_class > self.class_t)
+            box_score = np.max(scores, axis=-1)
+            index = np.where(box_score > self.class_t)
 
             filtered_boxes.append(box[index])
             box_classes.append(box_class[index])
