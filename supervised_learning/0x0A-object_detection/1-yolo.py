@@ -78,11 +78,9 @@ class Yolo:
         box_class_probs = []
         for i, output in enumerate(outputs):
             anchor = self.anchors[i]
-            grid_height, grid_height = output[:2]
-            t_x = output[..., 0]
-            t_y = output[..., 1]
-            t_w = output[..., 2]
-            t_h = output[..., 3]
+            grid_height, grid_width = output.shape[:2]
+            t_xy = output[..., :2]
+            t_wh = output[..., 2:4]
             box_confidence = output[..., 4]
             class_probabilities = output[..., 5:]
 
@@ -93,10 +91,20 @@ class Yolo:
             box_confidences.append(box_conf)
             box_class_probs.append(sig_prob)
 
-            x1, y1 = t_x-t_w/2, t_y-t_h/2
-            x2, y2 = t_x+t_w/2, t_y+t_h/2
+            b_wh = anchor * np.exp(t_wh)
+            b_wh /= self.model.inputs[0].shape.as_list()[1:3]
 
-            box = np.concatenate((x1, y1, x2, y2), axis=-1)
+            grid = np.tile(np.indices((grid_width, grid_height)).T,
+                           anchor.shape[0]).reshape((grid_height, grid_width) +
+                                                    anchor.shape)
+
+            b_xy = (self.sigmoid(t_xy) + grid) / [grid_width, grid_height]
+
+            b_xy1 = b_xy - (b_wh / 2)
+            b_xy2 = b_xy + (b_wh / 2)
+
+            box = np.concatenate((b_xy1, b_xy2), axis=-1)
+            box *= np.tile(np.flip(image_size, axis=0), 2)
 
             boxes.append(box)
-        return (boxes, None, None)
+        return (boxes, box_confidences, box_class_probs)
