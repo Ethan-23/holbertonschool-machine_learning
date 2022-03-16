@@ -14,11 +14,14 @@ def determinant(matrix):
         return matrix[0][0]
     if len(matrix) == 2:
         return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
-    if len(matrix) == 3:
-        a = matrix[0][0] * (matrix[1][1] * matrix[2][2] -
-                            matrix[1][2] * matrix[2][1])
-        b = matrix[0][1] * (matrix[1][0] * matrix[2][2] -
-                            matrix[1][2] * matrix[2][0])
-        c = matrix[0][2] * (matrix[1][0] * matrix[2][1] -
-                            matrix[1][1] * matrix[2][0])
-        return a - b + c
+    total = 0
+    for i in list(range(len(matrix))):
+        tempMatrix = matrix
+        tempMatrix = tempMatrix[1:]
+        height = len(tempMatrix)
+        for j in range(height):
+            tempMatrix[j] = tempMatrix[j][0:i] + tempMatrix[j][i+1:]
+        sign = (-1) ** (i % 2)
+        sub_det = determinant(tempMatrix)
+        total += sign * matrix[0][i] * sub_det
+    return total
