@@ -36,7 +36,7 @@ def minor(matrix):
         if len(i) != len(matrix) or type(matrix[0][0]) == list:
             raise ValueError("matrix must be a square matrix")
     if len(matrix) == 1:
-        return 1
+        return [[1]]
     if len(matrix) == 2:
         return [[matrix[1][1], matrix[1][0]], [matrix[0][1], matrix[0][0]]]
     new = []
