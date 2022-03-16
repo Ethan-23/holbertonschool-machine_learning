@@ -4,7 +4,7 @@
 
 def determinant(matrix):
     """Calculates the Determinant of given matrix"""
-    if type(matrix) != list or len(matrix) == 0 or type(matrix[0]) != list:
+    if type(matrix) != list or len(matrix) == 0 or type(matrix[0]) != list or type(matrix[0][0]) == list:
         raise TypeError("matrix must be a list of lists")
     if matrix == [[]]:
         return 1
