@@ -4,13 +4,8 @@
 
 def determinant(matrix):
     """Calculates the Determinant of given matrix"""
-    if type(matrix) != list or len(matrix) == 0 or type(matrix[0]) != list:
-        raise TypeError("matrix must be a list of lists")
     if matrix == [[]]:
         return 1
-    for i in matrix:
-        if len(i) != len(matrix) or type(matrix[0][0]) == list:
-            raise ValueError("matrix must be a square matrix")
     if len(matrix) == 1:
         return matrix[0][0]
     if len(matrix) == 2:
@@ -35,10 +30,11 @@ def getMatrixMinor(m, i, j):
 
 def minor(matrix):
     """Calculates the Determinant of given matrix"""
-    if type(matrix) != list or len(matrix) == 0:
+    if type(matrix) != list or len(matrix) == 0 or type(matrix[0]) != list:
         raise TypeError("matrix must be a list of lists")
-    if len(matrix) != len(matrix[0]):
-        raise ValueError("matrix must be a non-empty square matrix")
+    for i in matrix:
+        if len(i) != len(matrix) or type(matrix[0][0]) == list:
+            raise ValueError("matrix must be a square matrix")
     if len(matrix) == 1:
         return 1
     if len(matrix) == 2:
