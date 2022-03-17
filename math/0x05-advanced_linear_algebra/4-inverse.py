@@ -108,9 +108,12 @@ def inverse(matrix):
             raise ValueError("matrix must be a non-empty square matrix")
     newmat = adjugate(matrix)
     det = determinant(matrix)
+    inversemat = []
     if det == 0:
         return None
     for i in range(len(newmat)):
+        temp = []
         for j in range(len(newmat)):
-            newmat[i][j] *= (1/det)
-    return newmat
+            temp.append(newmat[i][j] * (1/det))
+        inversemat.append(temp)
+    return inversemat
