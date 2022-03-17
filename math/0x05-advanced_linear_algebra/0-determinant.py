@@ -4,11 +4,13 @@
 
 def determinant(matrix):
     """Calculates the Determinant of given matrix"""
-    if type(matrix) != list or len(matrix) == 0 or type(matrix[0]) != list:
+    if type(matrix) != list or len(matrix) == 0:
         raise TypeError("matrix must be a list of lists")
     if matrix == [[]]:
         return 1
     for i in matrix:
+        if type(i) != list:
+            raise TypeError("matrix must be a list of lists")
         if len(i) != len(matrix) or type(i[0]) == list:
             raise ValueError("matrix must be a square matrix")
     if len(matrix) == 1:
