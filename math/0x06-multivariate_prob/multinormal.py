@@ -24,3 +24,16 @@ class MultiNormal:
         self.mean = mean
         cov = (1 / (n - 1)) * np.matmul(data - mean, data.T - mean.T)
         self.cov = cov
+
+    def pdf(self, x):
+        if type(x) is not np.ndarray:
+            raise TypeError("x must be a numpy.ndarray")
+        d = self.cov.shape[0]
+        if len(x.shape) != 2 or x.shape[1] != 1 or x.shape[0] != d:
+            raise ValueError("x must have the shape ({}, 1)".format(d))
+        det = np.linalg.det(self.cov)
+        inv = np.linalg.inv(self.cov)
+        pdf = 1.0 / np.sqrt(((2 * np.pi) ** d) * det)
+        mult = np.matmul(np.matmul((x - self.mean).T, inv), (x - self.mean))
+        pdf *= np.exp(-0.5 * mult)
+        return pdf[0][0]
