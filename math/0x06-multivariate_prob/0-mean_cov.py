@@ -6,7 +6,7 @@ import numpy as np
 
 def mean_cov(X):
     """Returns: mean, cov"""
-    if type(X) is not np.ndarray:
+    if type(X) is not np.ndarray or len(X.shape) != 2:
         raise TypeError("X must be a 2D numpy.ndarray")
     n = X.shape[0]
     if n < 2:
