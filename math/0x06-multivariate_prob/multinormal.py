@@ -34,7 +34,9 @@ class MultiNormal:
         if type(x) is not np.ndarray:
             raise TypeError("x must be a numpy.ndarray")
         d = self.cov.shape[0]
-        if len(x.shape) != 2 or x.shape[1] != 1 or x.shape[0] != d:
+        if len(x.shape) != 2:
+            raise ValueError("x must have the shape ({}, 1)".format(d))
+        if x.shape[1] != 1 or x.shape[0] != d:
             raise ValueError("x must have the shape ({}, 1)".format(d))
         det = np.linalg.det(self.cov)
         inv = np.linalg.inv(self.cov)
