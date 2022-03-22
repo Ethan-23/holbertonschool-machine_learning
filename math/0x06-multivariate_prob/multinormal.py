@@ -5,6 +5,9 @@ import numpy as np
 
 
 class MultiNormal:
+    """
+    MultiNormal class
+    """
 
     def __init__(self, data):
         """
