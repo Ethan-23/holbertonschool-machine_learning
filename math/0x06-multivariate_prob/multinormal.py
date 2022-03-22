@@ -26,6 +26,11 @@ class MultiNormal:
         self.cov = cov
 
     def pdf(self, x):
+        """
+        x is a numpy.ndarray of shape (d, 1) containing the data point
+            whose PDF should be calculated
+        d is the number of dimensions of the Multinomial instance
+        """
         if type(x) is not np.ndarray:
             raise TypeError("x must be a numpy.ndarray")
         d = self.cov.shape[0]
