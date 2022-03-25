@@ -23,4 +23,4 @@ def pca(X, var=0.95):
     variance = np.cumsum(ratios)
     nd = np.argwhere(variance >= var)[0, 0]
     W = k.T[:, :(nd + 1)]
-    return W
+    return (W)
