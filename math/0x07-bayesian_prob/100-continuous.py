@@ -21,6 +21,8 @@ def posterior(x, n, p1, p2):
         raise TypeError("p1 must be a float in the range [0, 1]")
     if type(p2) is not float or p2 < 0 or p2 > 1:
         raise TypeError("p2 must be a float in the range [0, 1]")
+    if p2 <= p1:
+        raise ValueError("p2 must be greater than p1")
     dist1 = special.btdtr(x + 1, n - x + 1, p1)
     dist2 = special.btdtr(x + 1, n - x + 1, p2)
     posterior = dist2 - dist1
