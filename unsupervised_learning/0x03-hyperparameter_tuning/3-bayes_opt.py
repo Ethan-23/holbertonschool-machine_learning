@@ -29,6 +29,6 @@ class BayesianOptimization:
         """
         self.f = f
         self.gp = GP(X_init, Y_init, l, sigma_f)
-        self.X_s = X_init
+        self.X_s = np.linspace(bounds[0], bounds[1], ac_samples)[:, None]
         self.xsi = xsi
         self.minimize = minimize
