@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """RNN Encoder"""
 
-import numpy as np
 import tensorflow as tf
 
 
