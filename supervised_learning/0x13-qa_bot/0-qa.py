@@ -26,7 +26,7 @@ def question_answer(question, reference):
     short_start = tf.argmax(outputs[0][0][1:]) + 1
     short_end = tf.argmax(outputs[1][0][1:]) + 1
     answer_tokens = tokens[short_start: short_end + 1]
-    if(answer_tokens[-1] == "[SEP]"):
+    if(answer_tokens == [] or answer_tokens[-1] == "[SEP]"):
         return(None)
     answer = tokenizer.convert_tokens_to_string(answer_tokens)
     return(answer)
