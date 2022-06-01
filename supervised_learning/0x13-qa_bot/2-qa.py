@@ -37,7 +37,6 @@ def answer_loop(reference):
         short_start = tf.argmax(outputs[0][0][1:]) + 1
         short_end = tf.argmax(outputs[1][0][1:]) + 1
         answer_tokens = tokens[short_start: short_end + 1]
-        print(answer_tokens)
         if(answer_tokens == [] or answer_tokens[-1] == "[SEP]"):
             print("A: Sorry, I do not understand your question.")
             continue
