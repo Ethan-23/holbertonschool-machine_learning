@@ -21,13 +21,10 @@ def expectation(X, pi, m, S):
         return None, None
     n, d = X.shape
     k = pi.shape[0]
-    if (k, d) != m.shape or (k, d, d) != S.shape:
-        return None, None
-    results = []
+    results = np.zeros([k, n])
     for i in range(k):
-        p = pdf(X, m[i], S[i]) * pi[i]
-        results.append(p)
-    results = np.array(results)
-    likelihood = np.log(results.sum(axis=0)).sum()
-    results = results.sum(axis=0)
-    return results, likelihood
+        P = pdf(X, m[i], S[i])
+        results[i] = pi[i] * P
+    likelihood = np.sum(np.log(results.sum(axis=0)))
+    results = results / results.sum(axis=0)
+    return (results, likelihood)
