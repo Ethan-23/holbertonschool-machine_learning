@@ -8,7 +8,6 @@ def maximization(X, g):
     """
     maximization
     """
-    print(g)
     if type(X) is not np.ndarray or type(g) is not np.ndarray:
         return (None, None, None)
     if len(X.shape) != 2 or len(g.shape) != 2:
