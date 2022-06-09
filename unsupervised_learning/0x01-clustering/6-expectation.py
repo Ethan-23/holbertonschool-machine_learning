@@ -19,6 +19,10 @@ def expectation(X, pi, m, S):
         return None, None
     if type(S) is not np.ndarray or len(S.shape) != 3:
         return None, None
+    if S.shape[2] != S.shape[1]:
+        return (None, None)
+    if S.shape[0] != pi.shape[0] or S.shape[0] != m.shape[0]:
+        return (None, None)
     n, d = X.shape
     k = pi.shape[0]
     results = np.zeros([k, n])
