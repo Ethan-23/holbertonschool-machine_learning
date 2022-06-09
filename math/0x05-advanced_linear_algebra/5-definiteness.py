@@ -10,6 +10,8 @@ def definiteness(matrix):
         raise TypeError("matrix must be a numpy.ndarray")
     if matrix.ndim != 2:
         return None
+    if not np.array_equal(np.transpose(matrix), matrix):
+        return None
     for i in matrix:
         if len(matrix) != len(i):
             return None
