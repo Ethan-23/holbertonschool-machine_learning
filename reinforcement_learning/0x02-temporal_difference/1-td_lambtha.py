@@ -7,12 +7,11 @@ def td_lambtha(env, V, policy, lambtha, episodes=5000, max_steps=100,
                alpha=0.1, gamma=0.99):
     """td_lambtha"""
     
-    Et = np.zeros(V.shape[0])
     for episode in range(episodes):
         state = env.reset()
+        z = lambtha * gamma
         for step in range(max_steps):
-            Et = Et * lambtha * gamma
-            Et[state] += 1
+            
             action = policy(state)
 
             next_state, reward, done, info = env.step(action)
@@ -23,9 +22,9 @@ def td_lambtha(env, V, policy, lambtha, episodes=5000, max_steps=100,
             if env.desc.reshape(env.observation_space.n)[next_state] == b'G':
                 reward = 1
 
-            delta = reward + gamma * V[next_state] - V[state]
+            TD = reward + V[next_state]
 
-            V[state] = V[state] + alpha * delta * Et[state]
+            V[state] = (V[state] * z) + alpha * (TD - V[state])
 
             state = next_state
-    return V / 100
+    return V
