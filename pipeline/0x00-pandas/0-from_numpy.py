@@ -6,4 +6,6 @@ import pandas as pd
 
 def from_numpy(array):
     """from_numpy"""
-    return pd.DataFrame(array)
+    df = pd.DataFrame(array)
+    df = df.rename(columns={i:chr(i+65) for i in range(26)})
+    return df
