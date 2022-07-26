@@ -19,5 +19,5 @@ if __name__ == '__main__':
             ).total_seconds() / 60
         )
         print('Reset in {} min'.format(time))
-    else:
+    elif response.ok:
         print(req.json()['location'])
