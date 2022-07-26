@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Rate me is you can!"""
 
+from datetime import datetime
 import requests
 import sys
 
