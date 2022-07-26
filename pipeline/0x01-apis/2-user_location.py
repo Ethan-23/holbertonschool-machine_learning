@@ -14,10 +14,10 @@ if __name__ == '__main__':
         time = int(
             (
                 datetime.fromtimestamp(
-                    int(response.headers['X-RateLimit-Reset']))
+                    int(req.headers['X-RateLimit-Reset']))
                 - datetime.now()
             ).total_seconds() / 60
         )
         print('Reset in {} min'.format(time))
-    elif response.ok:
+    elif req.ok:
         print(req.json()['location'])
