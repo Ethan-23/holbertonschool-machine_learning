@@ -1,2 +1,2 @@
 -- Thing that I need
-SELECT `score`, `name` FROM second_table WHERE score >= 10 ORDER BY `score`;
+SELECT `score`, `name` FROM second_table WHERE score >= 10 ORDER BY `score` DESC;
