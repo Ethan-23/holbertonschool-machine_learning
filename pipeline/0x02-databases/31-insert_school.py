@@ -5,4 +5,4 @@
 def insert_school(mongo_collection, **kwargs):
     """insert_school"""
     doc = mongo_collection.insert_one(kwargs)
-    return(document.inserted_id)
+    return(doc.inserted_id)
